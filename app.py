@@ -42,32 +42,35 @@ def get_accuracy_str(raw_list): # display detection result as string
                     if count <= len(label):
                         sum_result.append(label_found[j])#, label[k])
 
-    for each_label in sum_result: # print detection result
+    if len(sum_result) > 0:
+        for each_label in sum_result: # print detection result
+            # change to thainame and add treatment and recommend result
+            if each_label[0] == "Powdery Mildew":
+                label_name = "โรคราแป้ง"
+                recommend = "None"
+                treatment = "-	หลังจากเก็บเกี่ยวผลผลิตแล้ว ให้ทำลายเศษซากพืชที่เคยเป็นโรคโดยไถกลบ และปลูกพืชหมุนเวียน \n -	ฉีดพ่นสารป้องกันกำจัดเชื้อรา เช่น ไตรอะดิมีฟอน (triadimefon) ไมโคลบิวทานิล (myclobutanil) โพรพิโคนาโซล (propiconazole) อะซอกชีสโตรบิน (azoxystrobin)"
+            elif each_label[0] == "Spot":
+                label_name = "โรคใบจุด"
+                recommend = "-	ตัดแต่งกิ่งทุเรียนให้โปร่ง แสงแดดส่องได้ทั่วถึง \n  - เมื่อพบกิ่ง และใบเริ่มแสดงอาการของโรคเพียงเล็กน้อย ให้ตัด และรวบรวมเผาทำลาย รวมทั้งให้รวบรวมใบที่ร่วงหล่นอยู่เผาทิ้งด้วยเพื่อลดการสะสมเชื้อโรค และลดการระบาดในปีต่อไป "
+                treatment = "-	ฉีดพ่นด้วยสารป้องกันกำจัดเชื้อรา เช่น โพรคลอราซ (prochloraz) แมนโคเซบ (mancozeb) ไดฟีโนโคนาโซล (difenoconazole) เป็นต้น"
+            elif each_label[0] == "Blight":
+                label_name = "โรคใบไหม้"
+                recommend = "-	ตัดแต่งใบที่เป็นโรค รวมทั้งกำจัดวัชพืชบริเวณแปลงปลูก เพื่อลดแหล่งสะสมของเชื้อสาเหตุ"
+                treatment = "-	ตัดกิ่งที่เป็นโรคออกเผาทำลาย (ถ้าเป็นกิ่งใหญ่ควรทาลอยปูนแดงหรือสารประกอบทองแดง) แล้วให้ฉีดพ่นด้วยสารเคมีคาร์เบ็นดาชิม (carbendazim) 60 % WP  อัตรา 10 กรัมต่อน้ำ 20 ลิตร หรือสารเคมีคอปเปอร์ออกซีคลอไรด์ (copper oxychloride) 85 % WP อัตรา 50 กรัมต่อน้ำ 20 ลิตร ให้ทั่วทั้งภายใน และภายนอก"
+            elif each_label[0] == "N_loss":
+                label_name = "อาการขาดธาตุไนโตรเจน"
+                recommend = "None"
+                treatment = "-	ผสมปุ๋ยทางดิน : ผสมปุ๋ย NPK ที่มีอัตราส่วนของค่า N มากที่สุด และสังเกตปริมาณการใช้ตามอาการของใบ \n -	ผสมปุ๋ยทางใบ : ใช้ปุ๋ยเคมีที่มีค่า N สูงๆ หรือ ใช้ยูเรียน้ำ สูตรไนโตรเจนสูง ผสมแล้วพ้นปุ๋ยนํ้า"
 
-        # change to thainame and add treatment and recommend result
-        if each_label[0] == "Powdery Mildew":
-            label_name = "โรคราแป้ง"
-            recommend = "None"
-            treatment = "-	หลังจากเก็บเกี่ยวผลผลิตแล้ว ให้ทำลายเศษซากพืชที่เคยเป็นโรคโดยไถกลบ และปลูกพืชหมุนเวียน \n -	ฉีดพ่นสารป้องกันกำจัดเชื้อรา เช่น ไตรอะดิมีฟอน (triadimefon) ไมโคลบิวทานิล (myclobutanil) โพรพิโคนาโซล (propiconazole) อะซอกชีสโตรบิน (azoxystrobin)"
-        elif each_label[0] == "Spot":
-            label_name = "โรคใบจุด"
-            recommend = "-	ตัดแต่งกิ่งทุเรียนให้โปร่ง แสงแดดส่องได้ทั่วถึง \n  - เมื่อพบกิ่ง และใบเริ่มแสดงอาการของโรคเพียงเล็กน้อย ให้ตัด และรวบรวมเผาทำลาย รวมทั้งให้รวบรวมใบที่ร่วงหล่นอยู่เผาทิ้งด้วยเพื่อลดการสะสมเชื้อโรค และลดการระบาดในปีต่อไป "
-            treatment = "-	ฉีดพ่นด้วยสารป้องกันกำจัดเชื้อรา เช่น โพรคลอราซ (prochloraz) แมนโคเซบ (mancozeb) ไดฟีโนโคนาโซล (difenoconazole) เป็นต้น"
-        elif each_label[0] == "Blight":
-            label_name = "โรคใบไหม้"
-            recommend = "-	ตัดแต่งใบที่เป็นโรค รวมทั้งกำจัดวัชพืชบริเวณแปลงปลูก เพื่อลดแหล่งสะสมของเชื้อสาเหตุ"
-            treatment = "-	ตัดกิ่งที่เป็นโรคออกเผาทำลาย (ถ้าเป็นกิ่งใหญ่ควรทาลอยปูนแดงหรือสารประกอบทองแดง) แล้วให้ฉีดพ่นด้วยสารเคมีคาร์เบ็นดาชิม (carbendazim) 60 % WP  อัตรา 10 กรัมต่อน้ำ 20 ลิตร หรือสารเคมีคอปเปอร์ออกซีคลอไรด์ (copper oxychloride) 85 % WP อัตรา 50 กรัมต่อน้ำ 20 ลิตร ให้ทั่วทั้งภายใน และภายนอก"
-        elif each_label[0] == "N_loss":
-            label_name = "อาการขาดธาตุไนโตรเจน"
-            recommend = "None"
-            treatment = "-	ผสมปุ๋ยทางดิน : ผสมปุ๋ย NPK ที่มีอัตราส่วนของค่า N มากที่สุด และสังเกตปริมาณการใช้ตามอาการของใบ \n -	ผสมปุ๋ยทางใบ : ใช้ปุ๋ยเคมีที่มีค่า N สูงๆ หรือ ใช้ยูเรียน้ำ สูตรไนโตรเจนสูง ผสมแล้วพ้นปุ๋ยนํ้า"
+            st.success(f'มีโอกาสเป็น :    "{label_name}"     {each_label[1]} % ')
+            if recommend != "None":
+                st.write(f"คำแนะนำในการรักษา : {label_name}")
+                st.write(recommend)
+            st.write(f"วิธีการรักษา : {label_name}")
+            st.write(treatment)
 
-        st.success(f'มีโอกาสเป็น :    "{label_name}"     {each_label[1]} % ')
-        if recommend != "None":
-            st.write(f"คำแนะนำในการรักษา : {label_name}")
-            st.write(recommend)
-        st.write(f"วิธีการรักษา : {label_name}")
-        st.write(treatment)
+    else: # ไม่พบโรคในรูปภาพ
+        st.warning("ไม่พบโรคในรูปภาพ !! กรุณาถ่ายภาพใหม่อีกครั้ง @ w @")
 
 
 
