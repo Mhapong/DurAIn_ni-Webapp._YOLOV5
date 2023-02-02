@@ -3,6 +3,6 @@ DurAIn-ni is an application that use to detect disease of durian by using leaf a
 
 Deploy link (Streamlit Cloud)
 
-- > https://tanaanan-durain-ni-yolov5--app-gx7gsd.streamlit.app/ (Run on CPU only !!)
+- > https://tanaanan-durain-ni-webapp--yolov5-app-blrqeb.streamlit.app/
 
 Developed by Tanaanan .M (inspired by Napassakorn .S and Jeerapat .S)
